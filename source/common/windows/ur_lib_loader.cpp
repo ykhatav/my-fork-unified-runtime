@@ -9,6 +9,7 @@
  */
 #include "ur_lib_loader.hpp"
 #include "logger/ur_logger.hpp"
+#include <cassert>
 
 namespace ur_loader {
 
@@ -25,6 +26,10 @@ void LibLoader::freeAdapterLibrary(HMODULE handle) {
 
 std::unique_ptr<HMODULE, LibLoader::lib_dtor>
 LibLoader::loadAdapterLibrary(const char *name) {
+   // Exclude current directory from DLL search path
+  if (!SetDllDirectoryA("")) {
+    assert(false && "Failed to update DLL search path");
+  }
     return std::unique_ptr<HMODULE, LibLoader::lib_dtor>(
         LoadLibraryExA(name, nullptr, 0));
 }

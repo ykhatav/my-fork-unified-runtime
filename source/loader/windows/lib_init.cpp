@@ -10,16 +10,12 @@
 
 #include "ur_lib.hpp"
 #include "ur_loader.hpp"
-#include <cassert>
+
 
 namespace ur_lib {
 
 extern "C" BOOL APIENTRY DllMain(HINSTANCE hinstDLL, DWORD fdwReason,
                                  LPVOID lpvReserved) {
-// Exclude current directory from DLL search path
-  if (!SetDllDirectoryA("")) {
-    assert(false && "Failed to update DLL search path");
-  }
     if (fdwReason == DLL_PROCESS_DETACH) {
         delete context;
         delete ur_loader::context;
