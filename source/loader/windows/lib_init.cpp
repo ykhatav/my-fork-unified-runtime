@@ -10,6 +10,7 @@
 
 #include "ur_lib.hpp"
 #include "ur_loader.hpp"
+#include <cassert>
 
 namespace ur_lib {
 
