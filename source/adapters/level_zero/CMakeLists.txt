@@ -121,6 +121,7 @@ target_link_libraries(${TARGET_NAME} PRIVATE
     ${PROJECT_NAME}::unified_malloc_framework
     LevelZeroLoader
     LevelZeroLoader-Headers
+    delayimp
 )
 
 target_include_directories(${TARGET_NAME} PRIVATE
