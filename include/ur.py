@@ -3776,7 +3776,7 @@ class UR_DDI:
     def __init__(self, version : ur_api_version_t):
         # load the ur_loader library
         if "Windows" == platform.uname()[0]:
-            self.__dll = WinDLL("ur_loader.dll", winmode=0)
+            self.__dll = WinDLL("ur_loader.dll", winmode=0x800)
         else:
             self.__dll = CDLL("libur_loader.so")
 
